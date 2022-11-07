@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %} Current Weather {% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-sm-4">
+            <div class="mb-6">
+                <table class="table table-striped">
+                    <thead>
+                    <th>Property</th>
+                    <th>Value</th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>City</td>
+                        <td>{{ forecast.city.title() }}</td>
+                    </tr>
+                    <tr>
+                        <td>Time</td>
+                        <td>{{ moment(forecast.time).format('YYYY MM DD HH:mm') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Temperature</td>
+                        <td>{{ forecast.temperature }}</td>
+                    </tr>
+                    <tr>
+                        <td>Humidity</td>
+                        <td>{{ forecast.humidity }}</td>
+                    </tr>
+                    <tr>
+                        <td>Overcast</td>
+                        <td>{{ forecast.overcast }}</td>
+                    </tr>
+                    <tr>
+                        <td>Wind speed</td>
+                        <td>{{ forecast.wind_speed }}</td>
+                    </tr>
+                    <tr>
+                        <td>Air pressure</td>
+                        <td>{{ forecast.air_pressure }}</td>
+                    </tr>
+                    <tr>
+                        <td>Chance of rain</td>
+                        <td>{{ forecast.chance_of_rain }}</td>
+                    </tr>
+                    <tr>
+                        <td>Chance of snow</td>
+                        <td>{{ forecast.chance_of_snow }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <form action="/refresh" method="POST">
+                    <input name="city" type="hidden" value="{{forecast.city}}">
+                    <input type="submit" value="Refresh data" class="btn btn-primary">
+                    <a href="/" class="btn btn-primary">Go back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

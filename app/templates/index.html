@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} Weather app {% endblock %}
+
+{% block page_content %}
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-sm-4">
+            <div class="mb-6">
+                <div class="form-group">
+                    <form method="POST" action="">
+                        {{ form.csrf_token }}
+                        {{ form.city.label(class_="form-label") }}
+                        {{ form.city(class_="form-control") }}
+                        <input type="submit" value="Get weather" class="btn btn-primary">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
